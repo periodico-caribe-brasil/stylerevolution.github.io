@@ -1,11 +1,11 @@
-title: Style Revolution
-description: Journal des Dames et des Modes
-url: 'https://stylerevolution.github.io'
+title:        'Style Revolution'
+description:  'Journal des Dames et des Modes'
+url:          'https://stylerevolution.github.io'
 
 # build settings
-theme: minima
-permalink: pretty
-exclude: [Gemfile*, vendor, Rakefile, README*, spec]
+theme:        minima
+permalink:    pretty
+exclude:      [Gemfile*, vendor, Rakefile, README*, spec]
 
 # collection settings
 collections:
@@ -13,41 +13,44 @@ collections:
     output: true
   exhibits:
     output: true
-    lunr_index:
-      content: true
-      fields: [title, author]
   plates:
     output: true
-    keep_order: true
-    source: plates.csv
-    layout: plate-page
-    iiif:
-      is_document: true
-      sort: true
-    lunr_index:
-      content: false
-      fields: [title, _date, caption, translation, keywords, pid]
+    layout: 'plate-page'
+    metadata:
+      source: 'plates.csv'
+    images:
+      source: 'preservation_images/plates'
 
-# search tests
+# search index settings
+lunr_index:
+  - file: 'js/lunr-index.json'
+    collections:
+      exhibits:
+        fields: [title, author]
+        content: true
+      plates:
+        fields: [title, _date, caption, translation, keywords, pid]
+
+
+# advanced: search tests
 quoll:
-  full:
-    page: search
-    terms: [turban, cheveux, crêpe, rose]
+  - page: '/search/'
+    terms: ['turban', 'cheveux', 'crêpe', 'rose']
 
 # js dependencies
 js:
   jquery:
     version: 3.2.1
-    cdn: https://code.jquery.com/jquery-3.2.1.min.js
+    src: https://code.jquery.com/jquery-3.2.1.min.js
   elasticlunr:
     version: 0.9.6
-    cdn: https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js
+    src: https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js
   leaflet:
     version: 1.3.1
-    cdn: https://unpkg.com/leaflet@1.3.1/dist/leaflet.js
+    src: https://unpkg.com/leaflet@1.3.1/dist/leaflet.js
   leaflet-iiif:
     version: 2.0.1
-    cdn: https://cdn.jsdelivr.net/npm/leaflet-iiif@2.0.1/leaflet-iiif.min.js
+    src: https://cdn.jsdelivr.net/npm/leaflet-iiif@2.0.1/leaflet-iiif.min.js
 
 
 webrick:

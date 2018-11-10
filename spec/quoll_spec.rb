@@ -3,8 +3,8 @@ baseurl = config.fetch('baseurl', '')
 perma_ext = config.fetch('permalink', '') == 'pretty' ? '/' : '.html'
 
 config['quoll'].each do |search|
-  page = "#{baseurl}/#{search[1]['page']}#{perma_ext}".gsub(%r{\/+}, '/')
-  terms = search[1]['terms']
+  page = "#{baseurl}/#{search['page']}#{perma_ext}".gsub(%r{\/+}, '/')
+  terms = search['terms']
 
   describe page, type: :feature, js: true do
     terms.each do |term|

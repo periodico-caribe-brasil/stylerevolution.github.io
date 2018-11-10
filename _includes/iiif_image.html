@@ -1,28 +1,27 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
-<script src="{{ site.js.leaflet.cdn }}"></script>
-<script src="{{ site.js.leaflet-iiif.cdn }}"></script>
+<script src="{{ site.js.leaflet.src }}"></script>
+<script src="{{ site.js.leaflet-iiif.src }}"></script>
+
 <div id="iiif-viewer"></div>
 
-{%- capture image_uri -%}
-  {{ site.baseurl }}/iiif/images/{{ page.collection }}/{{ page.pid }}/info.json
-{%- endcapture -%}
-
-<script type="text/javascript">window.image_uri = "{{ image_uri }}";</script>
 <script>
-  function loadIIIFViewer(image_uri) {
-    if ( $( "#iiif-viewer" ).length ) {
-      var iiif_viewer = L.map('iiif-viewer', {
-        center: [0, 0],
-        crs: L.CRS.Simple,
-        zoomDelta: 0.5,
-        zoomSnap: 0,
-        zoom: 0
+  if ( $( "#iiif-viewer" ).length ) {
+    var iiifLayers = {};
+    var leaflet_viewer = L.map('iiif-viewer', {
+      center: [0, 0],
+      crs: L.CRS.Simple,
+      zoomSnap: 0,
+      zoom: 0
+    });
+    $.getJSON('{{ include.manifest | absolute_url }}', function(data) {
+      var i = 1;
+      $.each(data.sequences[0].canvases, function(_, val) {
+        var label = `image${i}`;
+        iiifLayers[label] = L.tileLayer.iiif(`${val.images[0].resource.service['@id']}/info.json`, {fitBounds: true});
+        i++;
       });
-      L.tileLayer.iiif(image_uri).addTo(iiif_viewer);
-    }
-  }
-  if (typeof(image_uri) != "undefined"){
-    loadIIIFViewer(image_uri);
-    console.log(image_uri);
+      if (i > 2){ L.control.layers(iiifLayers).addTo(leaflet_viewer);}
+      iiifLayers[Object.keys(iiifLayers)[0]].addTo(leaflet_viewer);
+    });
   }
 </script>
