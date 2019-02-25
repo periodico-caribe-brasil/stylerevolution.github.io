@@ -1,0 +1,13 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://stylerevolution.github.io/iiif/collection/top.json",
+  "@type": "sc:Collection",
+  "label": "top",
+  "manifests": [
+    {
+      "@id": "https://stylerevolution.github.io/iiif/plates/manifest.json",
+      "@type": "sc:Manifest",
+      "label": "plates"
+    }
+  ]
+}

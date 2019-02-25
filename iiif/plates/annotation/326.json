@@ -1,0 +1,19 @@
+{
+  "@type": "oa:Annotation",
+  "@id": "https://stylerevolution.github.io/iiif/plates/annotation/326.json",
+  "motivation": "sc:painting",
+  "resource": {
+    "@id": "https://stylerevolution.github.io/iiif/images/plates/326/full/full/0/default.jpg",
+    "@type": "dcterms:Image",
+    "format": "image/jpeg",
+    "service": {
+      "@context": "http://iiif.io/api/image/2/context.json",
+      "@id": "https://stylerevolution.github.io/iiif/images/plates/326",
+      "profile": "http://iiif.io/api/image/2/level0.json"
+    },
+    "width": 1558,
+    "height": 2000
+  },
+  "on": "https://stylerevolution.github.io/iiif/plates/canvas/326.json",
+  "@context": "http://iiif.io/api/presentation/2/context.json"
+}

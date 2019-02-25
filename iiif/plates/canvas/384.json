@@ -1,0 +1,29 @@
+{
+  "@type": "sc:Canvas",
+  "@id": "https://stylerevolution.github.io/iiif/plates/canvas/384.json",
+  "label": "384",
+  "width": 1468,
+  "height": 2000,
+  "thumbnail": "https://stylerevolution.github.io/iiif/images/plates/384/full/250,/0/default.jpg",
+  "images": [
+    {
+      "@type": "oa:Annotation",
+      "@id": "https://stylerevolution.github.io/iiif/plates/annotation/384.json",
+      "motivation": "sc:painting",
+      "resource": {
+        "@id": "https://stylerevolution.github.io/iiif/images/plates/384/full/full/0/default.jpg",
+        "@type": "dcterms:Image",
+        "format": "image/jpeg",
+        "service": {
+          "@context": "http://iiif.io/api/image/2/context.json",
+          "@id": "https://stylerevolution.github.io/iiif/images/plates/384",
+          "profile": "http://iiif.io/api/image/2/level0.json"
+        },
+        "width": 1468,
+        "height": 2000
+      },
+      "on": "https://stylerevolution.github.io/iiif/plates/canvas/384.json"
+    }
+  ],
+  "@context": "http://iiif.io/api/presentation/2/context.json"
+}
